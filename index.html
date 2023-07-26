@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Is Vivid Done?</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.rtl.min.css" integrity="sha384-gXt9imSW0VcJVHezoNQsP+TNrjYXoGcrqBZJpry9zJt8PCQjobwmhMGaDHTASo9N" crossorigin="anonymous">
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js">
+    </script>
+  
+  
+
+</head>
+<body>
+<div class="container">
+  <h1 class="text-center text-primary display-1">סיימנו עם הVivid?</h1>
+  <p class="text-center text-danger display-2">לא</p>
+  <div class="text-center">
+    <button type="button" class="btn btn-primary" data-bs-toggle="refresh" onClick="updateTimeSince20230724">
+      <i class="bi bi-arrow-clockwise"></i>תבדוק שוב
+    </button>
+    <span class="text-danger"><span id="time-since-2023-07-24"></span></span>
+  </div>
+</div>
+    <script>
+    function getPrettyTimespan(start_date, end_date) {
+      let restDiff;
+      const momentEnd = moment(end_date);
+      const momentStart = moment(start_date);
+      const days = momentEnd.diff(momentStart, "days");
+    
+      let pretty_timespan = "חלפו ";
+      if (days > 0) {
+        pretty_timespan += ` ${days} ימים `;
+      }
+      pretty_timespan += "מאז שהתחלנו לעבוד " 
+      return pretty_timespan;
+    };
+    //   function timeSince20230724() {
+    //     const today = new Date();
+    //     const date20230724 = new Date(2023, 7, 24);
+    //     const difference = today - date20230724;
+    //     return difference.days;
+    //   };
+
+      function updateTimeSince20230724() {
+        const timeSince = getPrettyTimespan(new Date(), new Date(2023, 7, 24));
+        console.log(timeSince);
+        document.getElementById("time-since-2023-07-24").innerText = timeSince;
+      };
+
+      setInterval(updateTimeSince20230724, 3600);
+    </script>
+</body>
+
+</html>
